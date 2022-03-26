@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const webpack = require('webpack');
+
 module.exports = {
   entry: {
     app: './src/index.js',
@@ -31,6 +33,12 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Production',
+    }),
+    new webpack.ProvidePlugin({
+      // 告诉webpack如果遇到至少一处`_`变量的模块实例，将lodash package引入并将其提供给需要它的模块
+      // _: 'lodash',
+      // 与tree shaking配合，去除library中没用到的导出
+      join: ['lodash', 'join'],
     }),
   ],
   optimization: {

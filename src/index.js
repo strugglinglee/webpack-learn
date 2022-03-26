@@ -1,4 +1,4 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import Print from './print';
 // import printMe from './print';
 
@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 function component() {
   let element = document.createElement('div');
-  element.innerHTML = _.join(['Hello', 'webpack'], '');
+  element.innerHTML = join(['Hello', 'webpack'], '');
 
   element.onclick = Print.bind(null, 'Hello webpack!');
 
