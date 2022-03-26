@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const WorkboxPlugin = require('workbox-webpack-plugin');
+
 const webpack = require('webpack');
 
 module.exports = {
@@ -39,6 +41,12 @@ module.exports = {
       // _: 'lodash',
       // 与tree shaking配合，去除library中没用到的导出
       join: ['lodash', 'join'],
+    }),
+    new WorkboxPlugin.GenerateSW({
+      // 这些选项帮助快速启用 ServiceWorkers
+      // 不允许遗留任何“旧的” ServiceWorkers
+      clientsClaim: true,
+      skipWaiting: true,
     }),
   ],
   optimization: {
