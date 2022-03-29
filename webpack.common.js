@@ -8,7 +8,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: './src/index.ts',
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -28,6 +28,11 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ['file-loader'],
+      },
+      {
+        test: /\.tsx?$/,
+        use: ['ts-loader'],
+        exclude: /node_modules/,
       },
     ],
   },
@@ -60,5 +65,8 @@ module.exports = {
         },
       },
     },
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
   },
 };

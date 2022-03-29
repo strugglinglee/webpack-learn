@@ -10,6 +10,6 @@ console.log(
 //   console.log('Button Clicked: Here\'s "some text"!');
 // };
 
-export default function print(text) {
+export default function print(text: any) {
   console.log(text);
 }

@@ -48,6 +48,10 @@ function component() {
 }
 
 document.body.appendChild(component());
+
+function join(arg0: string[], arg1: string): string {
+  throw new Error('Function not implemented.');
+}
 // getComponent().then((component) => {
 //   document.body.appendChild(component);
 // });
