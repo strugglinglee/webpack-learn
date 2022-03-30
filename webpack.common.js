@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const FileListPlugin = require("st-learn-plugin");
 
 // const WorkboxPlugin = require("workbox-webpack-plugin");
 
@@ -56,6 +57,7 @@ module.exports = {
       // 与tree shaking配合，去除library中没用到的导出
       join: ["lodash", "join"],
     }),
+    new FileListPlugin(), // 实例化这个插件，有的时候需要传入对应的配置
     // new WorkboxPlugin.GenerateSW({
     //   // 这些选项帮助快速启用 ServiceWorkers
     //   // 不允许遗留任何“旧的” ServiceWorkers

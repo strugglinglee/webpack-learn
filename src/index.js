@@ -1,6 +1,7 @@
 // import _ from 'lodash';
 import Print from "./print";
 // import printMe from './print';
+const mdInfo = import("./1.md");
 
 if (process.env.NODE_ENV !== "production") {
   console.log("Looks like we are in development mode!");
@@ -8,8 +9,9 @@ if (process.env.NODE_ENV !== "production") {
 
 async function getComponent() {
   let element = document.createElement("div");
-  const { default: mdInfo } = await import("./1.md");
-  element.innerHTML = join(["Hello", "webpack", mdInfo], "");
+  const { default: mdHtml } = await mdInfo;
+  console.log(mdHtml);
+  element.innerHTML = join(["Hello", "webpack", mdHtml], "");
 
   element.onclick = Print.bind(null, "Hello webpack!");
 
