@@ -37,8 +37,8 @@ module.exports = {
       {
         test: /\.md$/,
         exclude: /node_modules/,
-        loader: path.resolve("./loader/index.js"),
-        // use: ["my-loader"],
+        // loader: path.resolve("./loader/index.js"),
+        use: ["loader-learn-loader"],
       },
     ],
   },
