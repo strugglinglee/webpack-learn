@@ -1,29 +1,17 @@
 // import _ from 'lodash';
-import Print from './print';
+import Print from "./print";
 // import printMe from './print';
 
-if (process.env.NODE_ENV !== 'production') {
-  console.log('Looks like we are in development mode!');
+if (process.env.NODE_ENV !== "production") {
+  console.log("Looks like we are in development mode!");
 }
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('/service-worker.js')
-      .then((registration) => {
-        console.log('SW registered: ', registration);
-      })
-      .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
-      });
-  });
-}
+async function getComponent() {
+  let element = document.createElement("div");
+  const { default: mdInfo } = await import("./1.md");
+  element.innerHTML = join(["Hello", "webpack", mdInfo], "");
 
-function component() {
-  let element = document.createElement('div');
-  element.innerHTML = join(['Hello', 'webpack'], '');
-
-  element.onclick = Print.bind(null, 'Hello webpack!');
+  element.onclick = Print.bind(null, "Hello webpack!");
 
   // const { default: _ } = await import(/*webpackChunkName: "lodash" */ 'lodash');
   // element.innerHTML = _.join(['Hello1', 'Webpack'], '');
@@ -47,14 +35,11 @@ function component() {
   return element;
 }
 
-document.body.appendChild(component());
+// document.body.appendChild(component());
 
-function join(arg0: string[], arg1: string): string {
-  throw new Error('Function not implemented.');
-}
-// getComponent().then((component) => {
-//   document.body.appendChild(component);
-// });
+getComponent().then((component) => {
+  document.body.appendChild(component);
+});
 
 // if (module.hot) {
 //   module.hot.accept('./print.js', function () {

@@ -26,3 +26,11 @@ loader 甚至允许你直接在 JavaScript 模块中 import CSS文件！
 - loader 能够产生额外的任意文件。
 
 通过（loader）预处理函数，loader 为 JavaScript 生态系统提供了更多能力。 用户现在可以更加灵活地引入**细粒度逻辑**，例如：压缩、打包、语言翻译和 更多其他特性。
+
+## 编写loader
+### 保持功能单一
+避免做多种功能，只需完成一种功能的转换即可
+
+### 模块
+webpack本身运行在node.js之上，一个loader就是一个node模块，这个模块导出的是一个函数。
+
